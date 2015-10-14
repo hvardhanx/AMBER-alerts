@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Fb Checking - Report A Lost Person</title>
+  <!-- Compiled and minified JavaScript -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+     <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Amber Alerts</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Forum</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Forum</a></li>
+      </ul>
+	  <ul class="right hide-on-med-and-down active">
+        <li>
+  <a class='dropdown-button'  data-beloworigin="true" href='#' data-activates='dropdown1'>Statistics</a>
+
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a href="#!">By Time</a></li>
+	
+    <li><a href="#!">By Location</a></li>
+    
+   
+  </ul>
+  
+		
+		</li>
+      </ul>
+	  
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Report a lost person</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Report a lost person</a></li>
+      </ul>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Found Someone?</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Found Someone?</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+
+<div class="container">
+<center><br/><br/>
+<h5>You need to login to proceed</h5><br/><br/><br/><br/>
+<script>
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+   // console.log('statusChangeCallback');
+   // console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+
+      // Logged into your app and Facebook.
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = " "
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = " ";
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '1717798061780725',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.2' // use version 2.2
+  });
+
+  // Now that we've initialized the JavaScript SDK, we call 
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    // FB.api('/me?fields=age_range,name,location,hometown,email,gender', function(response) {
+    //   console.log('Successful login for: ... '  +  "  " + " "  +"  "+ response.email + " " + response.id );
+
+    //  console.log(response.location.name +"  locstion   ")
+    //    var  details =    JSON.parse(response);
+
+    //   console.log(details);
+
+
+                FB.api('/me?fields=age_range,name,location,email,gender', function(response) {
+                    //Get the user's Information
+					         
+
+                   //window.open("/submitReport");
+
+                   console.log(response);
+                    
+                    var name = response.name;
+                    var email = response.email;
+
+                    document.cookie='cname= '+ name;
+					document.cookie='cmail= '+ email;
+                    var c= document.cookie;
+
+                    console.log(c);
+
+                   // var data =    JSON.parse(response);
+                    console.log(name , email);
+                    $.post('/sendUserData', { 'name' : name , 'email': email } ,  function(data , status){
+
+                           console.log(data , " it is running good");
+
+                           //window.open('/submitReport');
+						              window.location.replace('/submitReport');
+                    });
+
+                });
+            
+
+
+
+    //  window.open("level1.php","_self");
+    
+   // });
+  }
+</script>
+
+<!--
+  Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+-->
+
+<fb:login-button scope="public_profile,email" id="fb" data-size="xlarge"  onlogin="checkLoginState();">
+</fb:login-button>
+
+<button type="submit" id="logout">logout</button>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $("#logout").click(function  () {
+      // body...
+
+      FB.logout(function(response) {
+
+
+        // Person is now logged out
+    });
+    });
+
+  
+
+});
+
+</script>
+
+
+<div id="status">
+</div>
+</center>
+</div>
+  
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made at <a class="orange-text text-lighten-3" href="#">CFI 2015</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../../bin/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Canvas</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> ></script>
+</head>
+<body>
+<canvas id="myCanvas" width="650" height="1000" style="border:1px solid #000000;">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+<a id="download">Download as image</a>
+
+
+<script>
+
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+
+function doCanvas(){
+
+
+	ctx.font = "30px Arial";
+ctx.fillText("MISSING",250,40);
+ctx.moveTo(0,55);
+ctx.lineTo(650,55);
+ctx.stroke();
+var imageObj = new Image();
+imageObj.onload = function() {
+	ctx.drawImage(imageObj, 210, 70);
+ };
+ imageObj.src = 'default-person.png';
+
+ctx.font = 'bold 25pt Calibri';
+ctx.fillText('First Last Name', 210, 300); 
+ctx.strokeStyle = '#000000';
+ctx.beginPath();
+ctx.moveTo(70,350);
+ctx.lineTo(580, 350);
+ctx.stroke();
+ctx.closePath();
+ctx.font = "20px Arial";
+ctx.fillText("Address:- ",110,380);
+ctx.fillText("_____________________________________",110,420);
+ctx.fillText("_____________________________________",110,450);
+ctx.beginPath();
+ctx.moveTo(70,490);
+ctx.lineTo(580, 490);
+ctx.stroke();
+ctx.closePath();
+//notice
+ctx.strokeStyle = '#000000';
+ctx.beginPath();
+ctx.moveTo(70,500);
+ctx.lineTo(580, 500);
+ctx.stroke();
+ctx.closePath();
+ctx.font = "20px Arial";
+ctx.fillText("Notice:- ",110,530);
+ctx.fillText("text goes here",110,560);
+
+ctx.beginPath();
+ctx.moveTo(70,700);
+ctx.lineTo(580, 700);
+ctx.stroke();
+ctx.closePath();
+
+ctx.font = "20px Arial";
+ctx.fillText("Powered By",270,770);
+var imageObj1 = new Image();
+imageObj1.onload = function() {
+	ctx.drawImage(imageObj1, 210, 800);
+ };
+ imageObj1.src = 'di.png';
+
+}
+
+//  document.getElementById('download').addEventListener('click', function() {
+//     downloadCanvas(this, 'c', 'test.png');
+
+//     console.log("reaching here");
+// }, false);
+
+
+$(document).ready(function(){
+
+var url= c.toDataURL();
+  console.log(url);
+
+ $('#download').click(function(){
+
+ 	   //  downloadCanvas(this, 'c', 'test.png');
+
+ 	   //  var url = c.toDataURL('image/png');
+ 	   //   var url= c.toDataURL();
+
+ 	     $(this).attr("href", url);
+
+
+ 	     $(this).attr("download", "test.png");
+
+   		 console.log("reaching here", url);
+ })
+	
+})
+
+  var url= c.toDataURL();
+  console.log(url);
+
+ $('#download').click(function(){
+
+ 	   //  downloadCanvas(this, 'c', 'test.png');
+
+ 	   //  var url = c.toDataURL('image/png');
+ 	   //   var url= c.toDataURL();
+
+ 	     $(this).attr("href", url);
+
+
+ 	     $(this).attr("download", "test.png");
+
+   		 console.log("reaching here", url);
+ })
+
+//  function downloadCanvas(link, canvasId, filename) {
+    
+//     var url = $()
+//  	$(link).attr("href", "http://www.google.com/")
+//   //  link.href = document.getElementById(canvasId).toDataURL();
+//     link.download = filename;
+
+//     console.log("reaching here in download ");
+// }
+ 
+
+
+
+doCanvas(); 
+//  var link = document.createElement('a');
+//  link.innerHTML = c.toDataURL();
+//  link.addEventListener('click', function(ev) {
+//     link.href = c.toDataURL();
+//     link.download = "mypainting.png";
+// }, false);
+// document.body.appendChild(link);
+
+
+
+ //var url = document.getElementById('data').href = c.toDataURL("image/png", 1);
+        //document.getElementById('echo').src = url;
+/*
+
+ctx.fillStyle = "#CCCCCC";
+ctx.fillRect(0,0,400,500);
+ctx.fillStyle = "red";
+ctx.fillRect(0,0,400,100);
+
+context.strokeStyle = '#000000';
+context.beginPath();
+context.moveTo(0, 0);
+context.lineTo(54, 165);
+context.stroke();
+context.closePath();
+
+
+*/
+</script>
+</body>
+</html>
