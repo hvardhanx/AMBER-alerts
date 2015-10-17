@@ -79,14 +79,14 @@ exports.getStatsForMonth=function(req,res){
 }
 exports.getStatsForLocation=function(req,res){
 	var lat=req.params.latitude;
-	var lng=req.params.langitude;
-	users.find({loc:{
+	var lng=req.params.longitude;
+	/*users.find({loc:{
 		$nearSphere: msg.loc.coordinates,
         $maxDistance: 0.01
 	}},function(err,docs){
 		if (err) {
           res.send(err);
-        }
+        }*/
         res.render('statsForLocation',{data:doc});
 	});
 

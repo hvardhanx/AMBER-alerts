@@ -36,6 +36,6 @@ if(cluster.isMaster)
 
 	app.use('/submit',routes);
 	app.listen(8080,function(){
-        console.log('Process ' + process.pid + ' is listening to all incoming requests');
+        console.log('Process ' + process.pid + ' is listening to all incoming requests on 8080');
 	});
 }

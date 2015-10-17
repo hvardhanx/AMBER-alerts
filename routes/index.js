@@ -14,7 +14,7 @@ var twitter = require('simple-twitter');
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-        user: 'tarungarg546@gmail.com',
+        user: 'harshvd95@gmail.com',
         pass: 'laxauwftxfcvfwty'
     }
 });
@@ -47,8 +47,8 @@ router.post('/submitR',function(req,res){
 			function(done){
 				//mail
 				var mailOptions = {
-				    from: 'Tarun Garg <tarungarg546@gmail.com>', // sender address
-				    to: 'vipinkhushu@hotmail.com', // list of receivers
+				    from: 'Harsh Vardhan <harshvd95@gmail.com>', // sender address
+				    to: 'harshprime@gmail.com', // list of receivers
 				    subject: 'Hello ✔', // Subject line
 				    text: 'Hello world ✔', // plaintext body
 				    html: 'Embedded image: <img src="cid:unique@kreata.ee"/>',
@@ -71,7 +71,7 @@ router.post('/submitR',function(req,res){
 			function(done){
 				//msg
 				client.sendMessage({
-		            to:'+919802893707', // Any number Twilio can deliver to
+		            to:'+918298083939', // Any number Twilio can deliver to
 		            from: '+16572208653', // A number you bought from Twilio and can use for outbound communication
 		            body: 'Hello!' // body of the SMS message
 		        }, function(err, responseData) { //this function is executed when a response is received from Twilio
