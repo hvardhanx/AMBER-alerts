@@ -1,13 +1,13 @@
 {
-  "name": "AMBER-alerts",
+  "name": "cfinoida",
   "version": "0.0.1",
-  "description": "Amber Alert",
+  "description": "Amber Alert for CFI India",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Harsh Vardhan",
-  "license": "Apache",
+  "author": "MangoPeople Team",
+  "license": "ISC",
   "dependencies": {
     "async": "^1.4.2",
     "asyncjs": "0.0.9",
